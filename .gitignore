@@ -1,0 +1,5 @@
+.DStore
+.vscode
+libft/.git/
+libft/.gitignore
+libft/.DS_Store
