@@ -6,25 +6,25 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/05/26 18:49:44 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/05/27 19:57:42 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TIME =   $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
-SOURCE = main.c
+SOURCE = push_swap.c stack_utils.c push_swap_operations.c
 OBJS_SOURCE = $(SOURCE:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJS_SOURCE) libft/libft.a
+	$(CC) $(CFLAGS) -o $@ $^
+
 libft/libft.a:
 	make -C ./libft
-
-$(NAME): libft/libft.a $(OBJS_SOURCE)
-	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm -f $(OBJS_SOURCE) $(OBJS_BONUS)

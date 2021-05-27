@@ -21,8 +21,22 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	read_stack(t_stack *a);
+void	read_stack(t_stack *a, char *stack_name);
 
-void	add_to_stack(int n, t_stack *a);
+t_stack	*add_back_stack(int n, t_stack *a);
+
+t_stack	*add_front_stack(int n, t_stack *a);
+
+t_stack	*remove_front_stack(t_stack *a);
+
+t_stack	*remove_back_stack(t_stack *a);
+
+void	swap_op(t_stack *a);
+
+void	push_op(t_stack **a, t_stack **b);
+
+void	rotate_op(t_stack **a);
+
+void	reverse_rotate_op(t_stack **a);
 
 #endif

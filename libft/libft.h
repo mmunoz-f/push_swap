@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 11:57:22 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/05/25 21:18:20 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/05/27 19:34:28 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 double			ft_atod(char *np);
 
 t_list			*ft_lstfirst(t_list *lst);
+
+int				ft_strisdigit(const char *s);
 
 #endif
