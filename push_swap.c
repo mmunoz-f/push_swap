@@ -36,36 +36,19 @@ static t_stack	*init_stack(int argc, char **ints)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b = 0;
-	//t_stack *cmds;
+	char **cmds;
 
 	if (argc < 2)
 	{
-		ft_putstr_fd("Wrong input\n", 0);
+		ft_putstr_fd("Error\n", 0);
 		return (-1);
 	}
 	a = init_stack(argc - 1, argv + 1);
 	if (!a)
 	{
-		ft_putstr_fd("Wrong input\n", 0);
+		ft_putstr_fd("Error\n", 0);
 		return (-1);
 	}
-	b = add_front_stack(2, b);
-	b = add_front_stack(3, b);
-	b = add_back_stack(1, b);
-	b = add_front_stack(4, b);
-	read_stack(a, "stack a");
-	read_stack(b, "stack b");
-	swap_op(b);
-	read_stack(b, "swap stack b");
-	push_op(&b, &a);
-	read_stack(a, "pushed to b from a\nstack a");
-	read_stack(b, "stack b");
-	rotate_op(&b);
-	read_stack(b, "rotate stack b");
-	reverse_rotate_op(&b);
-	read_stack(b, "reverse rotate stack b");
-	//cmds = solve_push_swap(a);
-	//read_stack(cmds, 0);
+	solve_push_swap(a);
 	return (0);
 }

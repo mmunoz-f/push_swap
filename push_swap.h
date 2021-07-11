@@ -39,4 +39,8 @@ void	rotate_op(t_stack **a);
 
 void	reverse_rotate_op(t_stack **a);
 
+int		is_ordered(t_stack *a);
+
+int		stack_len(t_stack *a);
+
 #endif
