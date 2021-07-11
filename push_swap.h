@@ -15,7 +15,7 @@
 
 # include "libft/libft.h"
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int				n;
 	struct s_stack	*next;

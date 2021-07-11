@@ -38,7 +38,7 @@ t_stack	*add_back_stack(int n, t_stack *a)
 	return (start);
 }
 
-t_stack *add_front_stack(int n, t_stack *a)
+t_stack	*add_front_stack(int n, t_stack *a)
 {
 	t_stack	*start;
 
