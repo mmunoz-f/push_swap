@@ -36,7 +36,7 @@ static t_stack	*init_stack(int argc, char **ints)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	char **cmds;
+	char	**cmds;
 
 	if (argc < 2)
 	{

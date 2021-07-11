@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:07:45 by miguel            #+#    #+#             */
-/*   Updated: 2021/06/21 19:49:28 by miguel           ###   ########.fr       */
+/*   Updated: 2021/07/11 11:06:55 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	third_case(t_stack **a)
+{
+	reverse_rotate_op(a);
+	printf("rra\n");
+	if (is_ordered)
+	{
+		swap_op(a);
+		printf("sa\n");
+	}
+}
 
 void	sort_three(t_stack **a)
 {
@@ -31,14 +42,5 @@ void	sort_three(t_stack **a)
 		printf("ra\n");
 	}
 	else
-	{
-		reverse_rotate_op(a);
-		printf("rra\n");
-		if (is_ordered)
-		{
-			swap_op(a);
-			printf("sa\n");
-		}
-	}
-	return ;
+		third_case(a);
 }

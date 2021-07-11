@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_solve.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:33:57 by miguel            #+#    #+#             */
-/*   Updated: 2021/06/21 19:07:31 by miguel           ###   ########.fr       */
+/*   Updated: 2021/07/11 11:14:42 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	solve_push_swap(t_stack *a)
 			swap_op(a);
 			printf("sa\n");
 		}
-		if (len_a == 3)
+		else if (len_a == 3)
 			sort_three(a);
+		else
+			greater_stack_solve(a);
 	}
 	merge_stack(a, b);
 	free_stack(a);

@@ -21,7 +21,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	read_stack(t_stack *a, char *stack_name);
+/**
+ *	stack_utils.c
+ */
 
 t_stack	*add_back_stack(int n, t_stack *a);
 
@@ -31,6 +33,22 @@ t_stack	*remove_front_stack(t_stack *a);
 
 t_stack	*remove_back_stack(t_stack *a);
 
+int		stack_len(t_stack *a);
+
+/**
+ *	push_swap_utils.c
+ */
+
+void	read_stack(t_stack *a, char *stack_name);
+
+int		is_ordered(t_stack *a);
+
+void	free_stack(t_stack *a);
+
+/**
+ * 	push_swap_operations.c
+ */
+
 void	swap_op(t_stack *a);
 
 void	push_op(t_stack **a, t_stack **b);
@@ -39,8 +57,16 @@ void	rotate_op(t_stack **a);
 
 void	reverse_rotate_op(t_stack **a);
 
-int		is_ordered(t_stack *a);
+/**
+ * 	push_swap_solve.c
+ */
 
-int		stack_len(t_stack *a);
+void	solve_push_swap(t_stack *a);
+
+/**
+ * 	sort_stack.c
+ */
+
+void	sort_three(t_stack **a);
 
 #endif
