@@ -14,8 +14,8 @@
 
 void	swap_op(t_stack *a)
 {
-	int	c;
-	t_stack *b;
+	int		c;
+	t_stack	*b;
 
 	if (!a || !(a->next))
 		return ;
@@ -35,7 +35,7 @@ void	push_op(t_stack **a, t_stack **b)
 
 void	rotate_op(t_stack **a)
 {
-	int first;
+	int	first;
 
 	if (!(*a))
 		return ;
@@ -46,8 +46,8 @@ void	rotate_op(t_stack **a)
 
 void	reverse_rotate_op(t_stack **a)
 {
-	int	last;
-	t_stack *tmp;
+	int		last;
+	t_stack	*tmp;
 
 	if (!(*a))
 		return ;
