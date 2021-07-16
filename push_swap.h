@@ -66,7 +66,7 @@ void			reverse_rotate_op(t_stack **a);
  * 	push_swap_solve.c
  */
 
-void			solve_push_swap(t_stack *a);
+void			solve_push_swap(t_stack *a, int entry_point);
 
 void			leave_solve(t_stack *a);
 

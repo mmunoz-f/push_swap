@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 19:41:00 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/16 03:20:38 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/16 18:13:30 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,14 @@ void	sort_greater(t_stack **a, int len_a)
 
 	b = 0;
 	prepare_halfs(a, &b, len_a);
+	while (1)
+	{
+		if (!is_ordered(*a) && !is_ordered(*b))
+		{
+			merge_stack(*a, *b);
+			leave_solve(*a);
+		}
+		solve_push_swap(*a, 0);
+		len_a = stack_len(*a);
+	}
 }

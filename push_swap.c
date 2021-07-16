@@ -50,6 +50,6 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 0);
 		return (1);
 	}
-	solve_push_swap(a);
+	solve_push_swap(a, 1);
 	return (0);
 }
