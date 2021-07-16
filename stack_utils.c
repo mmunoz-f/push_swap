@@ -20,7 +20,7 @@ t_stack	*add_back_stack(int n, t_stack *a)
 	{
 		a = ft_calloc(1, sizeof(t_stack));
 		if (!a)
-			exit ;
+			exit(errno);
 		a->n = n;
 		start = a;
 	}
@@ -31,7 +31,7 @@ t_stack	*add_back_stack(int n, t_stack *a)
 			a = a->next;
 		a->next = ft_calloc(1, sizeof(t_stack));
 		if (!a)
-			exit ;
+			exit(errno);
 		a = a->next;
 		a->n = n;
 	}
@@ -44,7 +44,7 @@ t_stack	*add_front_stack(int n, t_stack *a)
 
 	start = ft_calloc(1, sizeof(t_stack));
 	if (!start)
-		exit ;
+		exit(errno);
 	start->n = n;
 	start->next = a;
 	return (start);
@@ -84,15 +84,15 @@ t_stack	*remove_back_stack(t_stack *a)
 	return (start);
 }
 
-int	stack_len(t_stack *a)
+t_stack	*cpy_stack(t_stack *a)
 {
-	int	len;
+	t_stack	*b;
 
-	len = 0;
+	b = 0;
 	while (a)
 	{
-		len++;
+		b = add_back_stack(a->n, b);
 		a = a->next;
 	}
-	return (len);
+	return (b);
 }

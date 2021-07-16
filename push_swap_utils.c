@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2021/06/21 18:52:49 by miguel           ###   ########.fr       */
+/*   Updated: 2021/07/16 01:34:05 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	merge_stack(t_stack *a, t_stack *b)
+{
+	while (b)
+	{
+		push_op(&a, &b);
+		write(STDOUT_FILENO, "pa\n", 3);
+	}
+}
+
+unsigned int	stack_len(t_stack *a)
+{
+	unsigned int	len;
+
+	len = 0;
+	while (a)
+	{
+		len++;
+		a = a->next;
+	}
+	return (len);
+}
 
 void	read_stack(t_stack *a, char *stack_name)
 {

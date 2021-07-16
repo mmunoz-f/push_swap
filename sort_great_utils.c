@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_solve.c                                  :+:      :+:    :+:   */
+/*   sort_great_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/21 18:33:57 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/16 03:16:26 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/07/16 02:12:27 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/07/16 02:53:49 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	leave_solve(t_stack *a)
+int	steps_to_min(t_stack *a, int mid_value)
 {
-	free_stack(a);
-	exit(0);
-}
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	int		steps;
 
-void	solve_push_swap(t_stack *a)
-{
-	int		len_a;
-
-	len_a = stack_len(a);
-	if (!is_ordered(a))
-		leave_solve(a);
-	if (len_a == 2)
-		swap_op(a);
-	else if (len_a == 3)
-		sort_three(&a);
-	else
-		sort_greater(&a, len_a);
-	leave_solve(a);
+	tmp1 = cpy_stack(a);
+	tmp2 = cpy_stack(a);
+	steps = 0;
+	while (tmp1 && mid_value > tmp1->n)
+	{
+		rotate_op(&tmp1);
+		steps--;
+	}
+	while (tmp2 && mid_value > tmp2->n)
+	{
+		reverse_rotate_op(&tmp2);
+		steps++;
+	}
+	free_stack(tmp1);
+	free_stack(tmp2);
+	return (steps);
 }

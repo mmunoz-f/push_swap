@@ -23,7 +23,9 @@ static t_stack	*init_stack(int argc, char **ints)
 		if (!(ft_strchr("-0123456789", **ints)))
 			return (0);
 		n = ft_atoi(*ints);
-		while (ft_strchr("-0123456789", **ints) && **ints)
+		if (**ints == '-')
+			(*ints)++;
+		while (ft_strchr("0123456789", **ints) && **ints)
 			(*ints)++;
 		if (**ints)
 			return (0);
@@ -36,18 +38,17 @@ static t_stack	*init_stack(int argc, char **ints)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	char	**cmds;
 
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 0);
-		return (-1);
+		return (1);
 	}
 	a = init_stack(argc - 1, argv + 1);
 	if (!a)
 	{
 		ft_putstr_fd("Error\n", 0);
-		return (-1);
+		return (1);
 	}
 	solve_push_swap(a);
 	return (0);

@@ -6,16 +6,18 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/05/27 19:57:42 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/16 02:29:42 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TIME =   $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address -g
 NAME = push_swap
-SOURCE = push_swap.c stack_utils.c push_swap_operations.c
+SOURCE = push_swap.c stack_utils.c push_swap_operations.c \
+	push_swap_solve.c push_swap_utils.c sort_greater.c \
+	sort_three.c sort_great_utils.c
 OBJS_SOURCE = $(SOURCE:.c=.o)
 
 all: $(NAME)
