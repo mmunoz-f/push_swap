@@ -38,6 +38,8 @@ static t_stack	*init_stack(int argc, char **ints)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	t_stack	*b;
+	t_stack *cmds;
 
 	if (argc < 2)
 	{
@@ -45,11 +47,13 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	a = init_stack(argc - 1, argv + 1);
+	b = 0;
+	cmds = 0;
 	if (!a)
 	{
 		ft_putstr_fd("Error\n", 0);
 		return (1);
 	}
-	solve_push_swap(a, 1);
+	solve_push_swap(&a, &b, &cmds);
 	return (0);
 }

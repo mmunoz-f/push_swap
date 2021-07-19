@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/16 01:34:05 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/19 18:05:10 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,27 @@ void	free_stack(t_stack *a)
 	}
 }
 
-int	is_ordered(t_stack *a)
+int	is_ordered(t_stack *a, int mode)
 {
 	if (!a)
 		return (0);
-	while (a->next)
+	if (mode)
 	{
-		if (a->n > a->next->n)
-			return (1);
-		a = a->next;
+		while (a->next)
+		{
+			if (a->n > a->next->n)
+				return (1);
+			a = a->next;
+		}
+	}
+	else
+	{
+		while (a->next)
+		{
+			if (a->n < a->next->n)
+				return (1);
+			a = a->next;
+		}
 	}
 	return (0);
 }

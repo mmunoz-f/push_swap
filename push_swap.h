@@ -16,6 +16,18 @@
 # include <errno.h>
 # include "libft/libft.h"
 
+# define M_SA 1
+# define M_SB 2
+# define M_SS 3
+# define M_PA 4
+# define M_PB 5
+# define M_RA 6
+# define M_RB 7
+# define M_RR 8
+# define M_RRA 9
+# define M_RRB 10
+# define M_RRR 11
+
 typedef struct s_stack
 {
 	int				n;
@@ -42,7 +54,7 @@ t_stack			*cpy_stack(t_stack *a);
 
 void			read_stack(t_stack *a, char *stack_name);
 
-int				is_ordered(t_stack *a);
+int				is_ordered(t_stack *a, int mode);
 
 void			free_stack(t_stack *a);
 
@@ -66,21 +78,21 @@ void			reverse_rotate_op(t_stack **a);
  * 	push_swap_solve.c
  */
 
-void			solve_push_swap(t_stack *a, int entry_point);
+void			solve_push_swap(t_stack **a, t_stack **b, t_stack **cmds);
 
-void			leave_solve(t_stack *a);
+void			leave_solve(t_stack *a, t_stack *cmds);
 
 /**
  * 	sort_three.c
  */
 
-void			sort_three(t_stack **a);
+void			sort_three(t_stack **a, t_stack **cmds, int stack);
 
 /**
  * 	sort_greater.c
  */
 
-void			sort_greater(t_stack **a, int len_a);
+void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds, int len_a);
 
 /**
  * 	sort_great_utils.c
