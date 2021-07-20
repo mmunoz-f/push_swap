@@ -6,13 +6,13 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:33:57 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/19 23:20:32 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/20 22:10:49 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_cmds(t_stack **cmds)
+void	print_cmds(t_stack **cmds)
 {
 	if ((*cmds)->n == M_SA)
 		write(STDOUT_FILENO, "sa\n", 3);

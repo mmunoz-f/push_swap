@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static t_stack	*init_stack(int argc, char **ints)
+static	t_stack	*init_stack(int argc, char **ints)
 {
 	t_stack	*a;
 	int		n;
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack *cmds;
+	t_stack	*cmds;
 
 	if (argc < 2)
 	{

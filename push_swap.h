@@ -82,22 +82,40 @@ void			solve_push_swap(t_stack **a, t_stack **b, t_stack **cmds);
 
 void			leave_solve(t_stack *a, t_stack *cmds);
 
+void			print_cmds(t_stack **cmds);
+
 /**
  * 	sort_three.c
  */
 
 void			sort_three(t_stack **a, t_stack **cmds, int stack);
 
+void	sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
+
 /**
  * 	sort_greater.c
  */
 
-void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds, int len_a);
+void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds, int len);
 
 /**
  * 	sort_great_utils.c
  */
 
 int				steps_to_min(t_stack *a, int mid_value);
+
+/**
+ * 	solve_six.c
+ */
+
+void	solve_six(t_stack **a, t_stack **a_cmds);
+
+/**
+ * 	simple_sort.c
+ */
+
+void	simple_reverse_solve(t_stack **b, t_stack **cmds);
+
+void	simple_solve(t_stack **a, t_stack **cmds);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:07:45 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/19 23:20:37 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/20 23:22:11 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ static void	add_cmds(t_stack **cmds, int op, int stack)
 	*cmds = add_back_stack(op, *cmds);
 }
 
+static void	third_reverse_case(t_stack **a, t_stack **cmds, int stack)
+{
+	reverse_rotate_op(a);
+	add_cmds(cmds, M_RRA, stack);
+	if (is_ordered(*a, 0))
+	{
+		swap_op(*a);
+		add_cmds(cmds, M_SA, stack);
+	}
+}
+
 static void	third_case(t_stack **a, t_stack **cmds, int stack)
 {
 	reverse_rotate_op(a);
@@ -37,16 +48,44 @@ static void	third_case(t_stack **a, t_stack **cmds, int stack)
 	}
 }
 
+void	sort_reverse_three(t_stack **a, t_stack **cmds, int stack)
+{
+	if ((*a)->n < (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
+			&& (*a)->n < (*a)->next->next->n)
+		|| ((*a)->next->n > (*a)->next->next->n
+			&& (*a)->n > (*a)->next->next->n)))
+	{
+		swap_op(*a);
+		add_cmds(cmds, M_SA, stack);
+		if (is_ordered(*a, 0))
+		{
+			reverse_rotate_op(a);
+			add_cmds(cmds, M_RRA, stack);
+		}
+	}
+	else if ((*a)->n < (*a)->next->n && (*a)->n < (*a)->next->next->n
+		&& (*a)->next->n > (*a)->next->next->n)
+	{
+		rotate_op(a);
+		add_cmds(cmds, M_RA, stack);
+	}
+	else
+		third_reverse_case(a, cmds, stack);
+}
+
 void	sort_three(t_stack **a, t_stack **cmds, int stack)
 {
-	if ((*a)->n > (*a)->next->n && (*a)->next->n < (*a)->next->next->n)
+	if ((*a)->n > (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
+				&& (*a)->n < (*a)->next->next->n)
+			|| ((*a)->next->n > (*a)->next->next->n
+				&& (*a)->n > (*a)->next->next->n)))
 	{
 		swap_op(*a);
 		add_cmds(cmds, M_SA, stack);
 		if (is_ordered(*a, 1))
 		{
-			rotate_op(a);
-			add_cmds(cmds, M_RA, stack);
+			reverse_rotate_op(a);
+			add_cmds(cmds, M_RRA, stack);
 		}
 	}
 	else if ((*a)->n > (*a)->next->n && (*a)->n > (*a)->next->next->n

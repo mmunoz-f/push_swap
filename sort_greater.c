@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 20:39:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/19 23:12:25 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/20 23:46:42 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n,
 			while (mid < (*a)->n)
 			{
 				rotate_op(a);
-				add_back_stack(M_RA, *cmds);
+				*cmds = add_back_stack(M_RA, *cmds);
 			}
 		}
 		else
@@ -71,13 +71,11 @@ static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n,
 			while (mid < (*a)->n)
 			{
 				reverse_rotate_op(a);
-				add_back_stack(M_RRA, *cmds);
+				*cmds = add_back_stack(M_RRA, *cmds);
 			}
 		}
 		push_op(b, a);
-		add_back_stack(M_PB, *cmds);
-		read_stack(*a, "Stack a");
-		read_stack(*b, "Stack b");
+		*cmds = add_back_stack(M_PB, *cmds);
 	}
 }
 
@@ -100,7 +98,8 @@ static void	send_sixths(t_stack **a, t_stack **b, t_stack **cmds)
 		len = stack_len(*a) % 3;
 	else
 		len = 0;
-	mid_value = get_mid_value(*a, len);
+	if (len)
+		mid_value = get_mid_value(*a, len);
 	pass_nnumber_belowx(a, b, cmds, len, mid_value);
 }
 
@@ -108,13 +107,16 @@ void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds, int len_a)
 {
 	(void)len_a;
 	send_sixths(a, b, cmds);
-	while(1)
+	while (1)
 	{
 		if (!is_ordered(*a, 1) && !is_ordered(*b, 0))
 		{
 			merge_stack(*a, *b);
 			leave_solve(*a, *cmds);
 		}
-
+		while (*cmds)
+			print_cmds(cmds);
+		solve_six(a, cmds);
+		solve_six(b, cmds);
 	}
 }
