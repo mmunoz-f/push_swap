@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-static	t_stack	*init_stack(int argc, char **ints)
-{
-	t_stack	*a;
-	int		n;
-
-	a = 0;
-	while (argc--)
-	{
-		if (!(ft_strchr("-0123456789", **ints)))
-			return (0);
-		n = ft_atoi(*ints);
-		if (**ints == '-')
-			(*ints)++;
-		while (ft_strchr("0123456789", **ints) && **ints)
-			(*ints)++;
-		if (**ints)
-			return (0);
-		a = add_back_stack(n, a);
-		ints++;
-	}
-	return (a);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -42,18 +19,12 @@ int	main(int argc, char **argv)
 	t_stack	*cmds;
 
 	if (argc < 2)
-	{
-		ft_putstr_fd("Error\n", 0);
-		return (1);
-	}
+		error_exit("Error\n", 1);
 	a = init_stack(argc - 1, argv + 1);
 	b = 0;
 	cmds = 0;
 	if (!a)
-	{
-		ft_putstr_fd("Error\n", 0);
-		return (1);
-	}
+		error_exit("Error\n", 1);
 	solve_push_swap(&a, &b, &cmds);
 	return (0);
 }

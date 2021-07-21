@@ -35,6 +35,14 @@ typedef struct s_stack
 }	t_stack;
 
 /**
+ * 	push_swap.c
+ */
+
+t_stack			*init_stack(int argc, char **ints);
+
+void			error_exit(char *line, int errnum);
+
+/**
  *	stack_utils.c
  */
 
@@ -46,7 +54,7 @@ t_stack			*remove_front_stack(t_stack *a);
 
 t_stack			*remove_back_stack(t_stack *a);
 
-t_stack			*cpy_stack(t_stack *a);
+t_stack			*cpy_stack(t_stack *a, int n);
 
 /**
  *	push_swap_utils.c
@@ -90,13 +98,13 @@ void			print_cmds(t_stack **cmds);
 
 void			sort_three(t_stack **a, t_stack **cmds, int stack);
 
-void	sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
+void			sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
 
 /**
  * 	sort_greater.c
  */
 
-void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds, int len);
+void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
 
 /**
  * 	sort_great_utils.c
@@ -108,14 +116,14 @@ int				steps_to_min(t_stack *a, int mid_value);
  * 	solve_six.c
  */
 
-void	solve_six(t_stack **a, t_stack **a_cmds);
+void			solve_six(t_stack **a, t_stack **a_cmds);
 
 /**
  * 	simple_sort.c
  */
 
-void	simple_reverse_solve(t_stack **b, t_stack **cmds);
+void			simple_reverse_solve(t_stack **b, t_stack **cmds);
 
-void	simple_solve(t_stack **a, t_stack **cmds);
+void			simple_solve(t_stack **a, t_stack **cmds);
 
 #endif

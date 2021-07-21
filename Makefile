@@ -6,34 +6,48 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/20 23:32:32 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/21 19:00:14 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TIME =   $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
+
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -g
-NAME = push_swap
-SOURCE = push_swap.c stack_utils.c push_swap_operations.c \
-	push_swap_solve.c push_swap_utils.c sort_greater.c \
-	sort_three.c sort_great_utils.c solve_six.c simple_sort.c
+
+SOURCE = stack_utils.c push_swap_operations.c \
+	push_swap_utils.c utils.c
 OBJS_SOURCE = $(SOURCE:.c=.o)
+
+NAME = push_swap
+PS_SOURCE = push_swap.c push_swap_solve.c sort_greater.c sort_three.c \
+	sort_great_utils.c solve_six.c simple_sort.c
+PS_OBJS = $(PS_SOURCE:.c=.o)
+
+CHECKER = checker
+CHECKER_SOURCE = checker.c
+CHECKER_OBJS = $(CHECKER_SOURCE:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS_SOURCE) libft/libft.a
+$(NAME): $(PS_OBJS) $(OBJS_SOURCE) libft/libft.a
 	$(CC) $(CFLAGS) -o $@ $^
 
 libft/libft.a:
 	make -C ./libft
 
+bonus: all $(CHECKER)
+
+$(CHECKER): $(CHECKER_OBJS) $(OBJS_SOURCE) libft/libft.a
+	$(CC) $(CFLAGS) -o $@ $^
+
 clean:
-	rm -f $(OBJS_SOURCE) $(OBJS_BONUS)
+	rm -f $(OBJS_SOURCE) $(PS_OBJS) $(CHECKER_OBJS)
 	make fclean -C ./libft
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 

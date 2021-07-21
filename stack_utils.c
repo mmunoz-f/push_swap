@@ -84,12 +84,12 @@ t_stack	*remove_back_stack(t_stack *a)
 	return (start);
 }
 
-t_stack	*cpy_stack(t_stack *a)
+t_stack	*cpy_stack(t_stack *a, int n)
 {
 	t_stack	*b;
 
 	b = 0;
-	while (a)
+	while (a && n--)
 	{
 		b = add_back_stack(a->n, b);
 		a = a->next;

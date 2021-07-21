@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:33:57 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/20 22:10:49 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 18:36:11 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	solve_push_swap(t_stack **a, t_stack **b, t_stack **cmds)
 	else if (len_a == 3)
 		sort_three(a, cmds, 0);
 	else
-		sort_greater(a, b, cmds, len_a);
+		sort_greater(a, b, cmds);
 	leave_solve(*a, *cmds);
 }

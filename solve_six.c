@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:12:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/20 23:47:46 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 18:42:47 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	compare_cmds(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 
 	tmp = *a;
-	while (tmp)
+	while (tmp && *b)
 	{
 		join_cmds(&tmp, b);
 		tmp = tmp->next;
@@ -55,7 +55,7 @@ static void	solve_stack(t_stack **a, t_stack **cmds)
 		swap_op(*a);
 		*cmds = add_back_stack(M_SA, *cmds);
 	}
-	if (len == 3)
+	else if (len == 3)
 		sort_three(a, cmds, 0);
 	else
 		simple_solve(a, cmds);
@@ -71,7 +71,7 @@ static void	solve_reverse_stack(t_stack **a, t_stack **cmds)
 		swap_op(*a);
 		*cmds = add_back_stack(M_SB, *cmds);
 	}
-	if (len == 3)
+	else if (len == 3)
 		sort_reverse_three(a, cmds, 1);
 	else
 		simple_reverse_solve(a, cmds);
@@ -82,7 +82,7 @@ void	solve_six(t_stack **a, t_stack **a_cmds)
 	t_stack			*b_cmds;
 
 	b_cmds = 0;
-	if (a_cmds)
+	if (*a_cmds)
 	{
 		if (is_ordered(*a, 0))
 			solve_reverse_stack(a, &b_cmds);
