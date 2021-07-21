@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:33:57 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/21 18:36:11 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 20:40:10 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	leave_solve(t_stack *a, t_stack *cmds)
 	while (cmds)
 		print_cmds(&cmds);
 	free_stack(a);
+	//system("leaks push_swap");
 	exit(0);
 }
 

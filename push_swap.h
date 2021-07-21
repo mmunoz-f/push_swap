@@ -38,7 +38,7 @@ typedef struct s_stack
  * 	push_swap.c
  */
 
-t_stack			*init_stack(int argc, char **ints);
+void			charge_arguments(int argc, char **argv, t_stack **a);
 
 void			error_exit(char *line, int errnum);
 
@@ -105,6 +105,8 @@ void			sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
  */
 
 void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
+
+void			get_max_min(t_stack *a, int *max, int *min);
 
 /**
  * 	sort_great_utils.c

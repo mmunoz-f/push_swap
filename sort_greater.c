@@ -6,13 +6,13 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 20:39:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 18:43:34 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 22:00:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	get_max_min(t_stack *a, int *max, int *min)
+void	get_max_min(t_stack *a, int *max, int *min)
 {
 	*max = a->n;
 	*min = a->n;
@@ -49,17 +49,20 @@ static int	get_mid_value(t_stack *a, unsigned int len)
 	return (min);
 }
 
-static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n, int mid)
+static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n)
 {
 	int	steps;
+	int	mid;
 
+	if (n <= 6)
+	{
+		n = 3;
+		mid = get_mid_value(*a, 3);
+	}
+	else
+		mid = get_mid_value(*a, 6);
 	while (n--)
 	{
-		if (!is_ordered(*a, 1) && !is_ordered(*b, 0))
-		{
-			merge_stack(*a, *b);
-			leave_solve(*a, *cmds);
-		}
 		steps = steps_to_min(*a, mid);
 		while (mid < (*a)->n && steps >= 0)
 		{
@@ -78,26 +81,16 @@ static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n,
 
 static void	send_sixths(t_stack **a, t_stack **b, t_stack **cmds)
 {
-	int	mid_value;
 	int	len;
 
 	len = stack_len(*a);
-	mid_value = get_mid_value(*a, 6);
-	while (stack_len(*a) > 6)
+	while (len > 6)
 	{
-		pass_nnumber_belowx(a, b, cmds, 6, mid_value);
+		pass_nnumber_belowx(a, b, cmds, 6);
 		len = stack_len(*a);
-		mid_value = get_mid_value(*a, 6);
 	}
-	if (len == 6)
-		pass_nnumber_belowx(a, b, cmds, 3, mid_value);
-	else if (len > 3)
-		len = stack_len(*a) % 3;
-	else
-		len = 0;
-	if (len)
-		mid_value = get_mid_value(*a, len);
-	pass_nnumber_belowx(a, b, cmds, len, mid_value);
+	if (len > 3)
+		pass_nnumber_belowx(a, b, cmds, len);
 }
 
 void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
@@ -109,18 +102,25 @@ void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
 	{
 		while (*cmds)
 			print_cmds(cmds);
-		if (!is_ordered(*a, 1) && !is_ordered(*b, 0))
+		read_stack(*a,"IStack a\n");
+		read_stack(*b,"IStack b\n");
+		if (!is_ordered(*a, 1) && !*b)
 		{
 			merge_stack(*a, *b);
 			leave_solve(*a, *cmds);
 		}
 		solve_six(a, cmds);
 		solve_six(b, cmds);
+		read_stack(*a,"MStack a\n");
+		read_stack(*b,"MStack b\n");
 		i = 3;
 		while (i-- && *b)
 		{
 			push_op(a, b);
 			*cmds = add_back_stack(M_PA, *cmds);
 		}
+		pass_three_biggest(a, b, cmds);
+		read_stack(*a,"FStack a\n");
+		read_stack(*b,"FStack b\n");
 	}
 }

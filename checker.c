@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 16:58:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 18:57:50 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 19:53:15 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		error_exit("Error\n", 1);
-	a = init_stack(argc - 1, argv + 1);
+	a = 0;
+	charge_arguments(argc - 1, argv + 1, &a);
 	b = 0;
 	read_stack(a, "Init stack A\n");
 	if (!a)

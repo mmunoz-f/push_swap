@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 22:12:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 18:42:47 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 20:58:22 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static void	compare_cmds(t_stack **a, t_stack **b)
 		tmp = tmp->next;
 	}
 	while (*b)
+	{
 		*a = add_back_stack((*b)->n, *a);
+		*b = remove_front_stack(*b);
+	}
 }
 
 static void	solve_stack(t_stack **a, t_stack **cmds)
@@ -92,5 +95,7 @@ void	solve_six(t_stack **a, t_stack **a_cmds)
 	{
 		if (is_ordered(*a, 1))
 			solve_stack(a, a_cmds);
+		else
+			*a_cmds = add_back_stack(0, *a_cmds);
 	}
 }

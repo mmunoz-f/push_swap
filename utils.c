@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 17:59:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 18:01:01 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/21 20:20:35 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,53 @@ static int	repeat_numbers(t_stack *a)
 	return (0);
 }
 
-t_stack	*init_stack(int argc, char **ints)
+static void	init_stack(int argc, char **ints, t_stack **a)
 {
-	t_stack	*a;
 	int		n;
 
-	a = 0;
 	while (argc--)
 	{
-		if (!(ft_strchr("-0123456789", **ints)))
-			return (0);
+		if (!(ft_strchr("-+0123456789", **ints)))
+			error_exit("Error\nNot a valid argument\n", 1);
 		n = ft_atoi(*ints);
-		if (**ints == '-')
+		if (**ints == '-' || **ints == '+')
+		{
 			(*ints)++;
+			if (!**ints)
+				error_exit("Error\nNot a valid argument\n", 1);
+		}
 		while (ft_strchr("0123456789", **ints) && **ints)
 			(*ints)++;
 		if (**ints)
-			return (0);
-		a = add_back_stack(n, a);
+			error_exit("Error\nNot a valid argument\n", 1);
+		*a = add_back_stack(n, *a);
 		ints++;
 	}
-	if (repeat_numbers(a))
-		return (0);
-	return (a);
+	if (repeat_numbers(*a))
+		error_exit("Error\nNot a valid argument\n", 1);
+}
+
+void charge_arguments(int argc, char **argv, t_stack **a)
+{
+	char			**split;
+	char			**tmp1;
+	char			**tmp2;
+	unsigned int	size;
+
+	while (argc--)
+	{
+		split = ft_split(*argv, " ");
+		size = 0;
+		while (split[size])
+			size++;
+		tmp1 = malloc(sizeof(char *) * (size + 1));
+		tmp1 = ft_memcpy(tmp1, split, sizeof(char *) * (size + 1));
+		tmp2 = split;
+		init_stack(size, split, a);
+		while (size)
+			free(tmp1[--size]);
+		free(tmp1);
+		free(tmp2);
+		argv++;
+	}
 }

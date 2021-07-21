@@ -19,12 +19,13 @@ int	main(int argc, char **argv)
 	t_stack	*cmds;
 
 	if (argc < 2)
-		error_exit("Error\n", 1);
-	a = init_stack(argc - 1, argv + 1);
+		error_exit("Error\nBad number of arguments\n", 1);
+	a = 0;
+	charge_arguments(argc - 1, argv + 1, &a);
 	b = 0;
 	cmds = 0;
 	if (!a)
-		error_exit("Error\n", 1);
+		error_exit("Error\nNot valid arguments\n", 1);
 	solve_push_swap(&a, &b, &cmds);
 	return (0);
 }

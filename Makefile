@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/21 19:00:14 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/21 20:40:19 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ TIME =   $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 SOURCE = stack_utils.c push_swap_operations.c \
 	push_swap_utils.c utils.c
