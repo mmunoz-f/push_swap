@@ -38,6 +38,14 @@ typedef struct s_stack
  * 	push_swap.c
  */
 
+void			leave_solve(t_stack *a, t_stack *cmds);
+
+void			print_cmds(t_stack **cmds);
+
+/**
+ * 	utils.c
+ */
+
 void			charge_arguments(int argc, char **argv, t_stack **a);
 
 void			error_exit(char *line, int errnum);
@@ -83,16 +91,6 @@ void			rotate_op(t_stack **a);
 void			reverse_rotate_op(t_stack **a);
 
 /**
- * 	push_swap_solve.c
- */
-
-void			solve_push_swap(t_stack **a, t_stack **b, t_stack **cmds);
-
-void			leave_solve(t_stack *a, t_stack *cmds);
-
-void			print_cmds(t_stack **cmds);
-
-/**
  * 	sort_three.c
  */
 
@@ -111,25 +109,13 @@ void			get_max_min(t_stack *a, int *max, int *min);
 int				get_mid_value(t_stack *a, unsigned int len);
 
 /**
- * 	sort_great_utils.c
- */
-
-int				steps_to_min(t_stack *a, int mid_value);
-
-/**
- * 	solve_six.c
- */
-
-void			solve_six(t_stack **a, t_stack **a_cmds);
-
-/**
  * 	simple_sort.c
  */
-
-void			pass_three_biggest(t_stack **a, t_stack **b, t_stack **cmds);
 
 void			simple_reverse_solve(t_stack **b, t_stack **cmds);
 
 void			simple_solve(t_stack **a, t_stack **cmds);
+
+void			compare_cmds(t_stack **a, t_stack **b);
 
 #endif

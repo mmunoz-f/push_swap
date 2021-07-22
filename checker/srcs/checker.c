@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 16:58:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 19:53:15 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/22 23:07:30 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
 static int	compare_op(char *line)
 {

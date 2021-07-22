@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 20:39:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 20:52:57 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/22 23:04:52 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	get_max_min(t_stack *a, int *max, int *min)
 {
@@ -49,19 +49,40 @@ int	get_mid_value(t_stack *a, unsigned int len)
 	return (min);
 }
 
-static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n)
+static int	steps_to_min(t_stack *a, int mid_value)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	int		steps;
+
+	tmp1 = cpy_stack(a, stack_len(a));
+	tmp2 = cpy_stack(a, stack_len(a));
+	steps = 0;
+	while (tmp1 && mid_value < tmp1->n)
+	{
+		rotate_op(&tmp1);
+		steps--;
+	}
+	while (tmp2 && mid_value < tmp2->n)
+	{
+		reverse_rotate_op(&tmp2);
+		steps++;
+	}
+	free_stack(tmp1);
+	free_stack(tmp2);
+	return (steps);
+}
+
+static void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
 {
 	int	steps;
 	int	mid;
+	int	len;
 
-	if (n < 6)
-	{
-		n = 3;
-		mid = get_mid_value(*a, 3);
-	}
-	else
-		mid = get_mid_value(*a, 6);
-	while (n--)
+	len = stack_len(*a);
+	len /= 2;
+	mid = get_mid_value(*a, len);
+	while (len--)
 	{
 		steps = steps_to_min(*a, mid);
 		while (mid < (*a)->n && steps >= 0)
@@ -79,53 +100,28 @@ static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n)
 	}
 }
 
-static void	send_sixths(t_stack **a, t_stack **b, t_stack **cmds)
-{
-	int	len;
-
-	len = stack_len(*a);
-	while (len > 6)
-	{
-		pass_nnumber_belowx(a, b, cmds, 6);
-		len = stack_len(*a);
-	}
-	if (len > 3)
-		pass_nnumber_belowx(a, b, cmds, len % 3);
-}
-
 void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
 {
-	int	i;
-	int	len;
+	t_stack	*b_cmds;
 
-	send_sixths(a, b, cmds);
+	pass_half(a, b, cmds);
+	while (*cmds)
+		print_cmds(cmds);
 	// read_stack(*a, "INIT a\n");
 	// read_stack(*b, "INIT b\n");
-	while (1)
+	b_cmds = 0;
+	simple_reverse_solve(b, &b_cmds);
+	simple_solve(a, cmds);
+	// read_stack(*a, "After sort a\n");
+	// read_stack(*b, "After sort b\n");
+	compare_cmds(cmds, &b_cmds);
+	while (*b)
 	{
-		len = stack_len(*b);
-		if (*b && len >= 6 && !(len % 6))
-			pass_three_biggest(a, b, cmds);
-		// read_stack(*a, "after pass a\n");
-		// read_stack(*b, "AFter pass b\n");
-		while (*cmds)
-			print_cmds(cmds);
-		if (!is_ordered(*a, 1) && !*b)
-		{
-			merge_stack(*a, *b);
-			leave_solve(*a, *cmds);
-		}
-		// read_stack(*a, "Pre solve six a\n");
-		// read_stack(*b, "Pre solve six b\n");
-		solve_six(a, cmds);
-		solve_six(b, cmds);
-		// read_stack(*a, "Post solve six a\n");
-		// read_stack(*b, "Post solve six b\n");
-		i = 3;
-		while (i--)
-		{
-			push_op(a, b);
-			*cmds = add_back_stack(M_PA, *cmds);
-		}
+		push_op(a, b);
+		*cmds = add_back_stack(M_PA, *cmds);
 	}
+	while (*cmds)
+		print_cmds(cmds);
+	// read_stack(*a, "Finish a\n");
+	// read_stack(*b, "Finish b\n");
 }

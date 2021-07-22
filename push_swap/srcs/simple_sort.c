@@ -6,46 +6,46 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:00:51 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 20:51:53 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/22 23:04:46 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
-void	pass_three_biggest(t_stack **a, t_stack **b, t_stack **cmds)
+static void	join_cmds(t_stack **a, t_stack **b)
+{
+	if ((*a)->n == M_SA && (*b)->n == M_SB)
+	{
+		(*a)->n = M_SS;
+		*b = remove_front_stack(*b);
+	}
+	else if ((*a)->n == M_RA && (*b)->n == M_RB)
+	{
+		(*a)->n = M_RR;
+		*b = remove_front_stack(*b);
+	}
+	else if ((*a)->n == M_RRA && (*b)->n == M_RRB)
+	{
+		(*a)->n = M_RRR;
+		*b = remove_front_stack(*b);
+	}
+}
+
+void	compare_cmds(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
-	int		i;
-	int		mid;
-	int		recover;
 
-	tmp = cpy_stack(*b, 6);
-	i = 3;
-	recover = 0;
-	mid = get_mid_value(tmp, 3);
-	while (i || recover)
+	tmp = *a;
+	while (tmp && *b)
 	{
-		if (!i && recover)
-		{
-			reverse_rotate_op(b);
-			*cmds = add_back_stack(M_RRB, *cmds);
-			recover--;
-			continue ;
-		}
-		if ((*b)->n > mid)
-		{
-			push_op(a, b);
-			*cmds = add_back_stack(M_PA, *cmds);
-			i--;
-		}
-		else
-		{
-			rotate_op(b);
-			*cmds = add_back_stack(M_RB, *cmds);
-			recover++;
-		}
+		join_cmds(&tmp, b);
+		tmp = tmp->next;
 	}
-	free_stack(tmp);
+	while (*b)
+	{
+		*a = add_back_stack((*b)->n, *a);
+		*b = remove_front_stack(*b);
+	}
 }
 
 void	simple_solve(t_stack **a, t_stack **cmds)
@@ -54,10 +54,10 @@ void	simple_solve(t_stack **a, t_stack **cmds)
 	t_stack	*recover;
 
 	recover = 0;
-	tmp = cpy_stack(*a, 3);
+	tmp = cpy_stack(*a, stack_len(*a));
 	while (is_ordered(tmp, 1) || recover)
 	{
-		if (!is_ordered(tmp, 1) && recover)
+		if (!is_ordered(tmp, 1) &&  recover)
 		{
 			reverse_rotate_op(a);
 			push_op(&tmp, &recover);
@@ -86,7 +86,7 @@ void	simple_reverse_solve(t_stack **b, t_stack **cmds)
 	t_stack	*recover;
 
 	recover = 0;
-	tmp = cpy_stack(*b, 3);
+	tmp = cpy_stack(*b, stack_len(*b));
 	while (is_ordered(tmp, 0) || recover)
 	{
 		if (!is_ordered(tmp, 0) && recover)

@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 17:59:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 20:20:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/22 23:06:57 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	error_exit(char *line, int errnum)
 {
