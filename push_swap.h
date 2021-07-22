@@ -108,6 +108,8 @@ void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
 
 void			get_max_min(t_stack *a, int *max, int *min);
 
+int				get_mid_value(t_stack *a, unsigned int len);
+
 /**
  * 	sort_great_utils.c
  */
@@ -123,6 +125,8 @@ void			solve_six(t_stack **a, t_stack **a_cmds);
 /**
  * 	simple_sort.c
  */
+
+void			pass_three_biggest(t_stack **a, t_stack **b, t_stack **cmds);
 
 void			simple_reverse_solve(t_stack **b, t_stack **cmds);
 

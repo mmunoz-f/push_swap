@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 20:39:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/21 22:00:31 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/22 20:52:57 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_max_min(t_stack *a, int *max, int *min)
 	}
 }
 
-static int	get_mid_value(t_stack *a, unsigned int len)
+int	get_mid_value(t_stack *a, unsigned int len)
 {
 	t_stack	*tmp;
 	int		max;
@@ -54,7 +54,7 @@ static void	pass_nnumber_belowx(t_stack **a, t_stack **b, t_stack **cmds, int n)
 	int	steps;
 	int	mid;
 
-	if (n <= 6)
+	if (n < 6)
 	{
 		n = 3;
 		mid = get_mid_value(*a, 3);
@@ -90,37 +90,42 @@ static void	send_sixths(t_stack **a, t_stack **b, t_stack **cmds)
 		len = stack_len(*a);
 	}
 	if (len > 3)
-		pass_nnumber_belowx(a, b, cmds, len);
+		pass_nnumber_belowx(a, b, cmds, len % 3);
 }
 
 void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
 {
 	int	i;
+	int	len;
 
 	send_sixths(a, b, cmds);
+	// read_stack(*a, "INIT a\n");
+	// read_stack(*b, "INIT b\n");
 	while (1)
 	{
+		len = stack_len(*b);
+		if (*b && len >= 6 && !(len % 6))
+			pass_three_biggest(a, b, cmds);
+		// read_stack(*a, "after pass a\n");
+		// read_stack(*b, "AFter pass b\n");
 		while (*cmds)
 			print_cmds(cmds);
-		read_stack(*a,"IStack a\n");
-		read_stack(*b,"IStack b\n");
 		if (!is_ordered(*a, 1) && !*b)
 		{
 			merge_stack(*a, *b);
 			leave_solve(*a, *cmds);
 		}
+		// read_stack(*a, "Pre solve six a\n");
+		// read_stack(*b, "Pre solve six b\n");
 		solve_six(a, cmds);
 		solve_six(b, cmds);
-		read_stack(*a,"MStack a\n");
-		read_stack(*b,"MStack b\n");
+		// read_stack(*a, "Post solve six a\n");
+		// read_stack(*b, "Post solve six b\n");
 		i = 3;
-		while (i-- && *b)
+		while (i--)
 		{
 			push_op(a, b);
 			*cmds = add_back_stack(M_PA, *cmds);
 		}
-		pass_three_biggest(a, b, cmds);
-		read_stack(*a,"FStack a\n");
-		read_stack(*b,"FStack b\n");
 	}
 }
