@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/22 23:13:55 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/23 00:37:19 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,17 @@ SOURCE = srcs/stack/stack_utils.c		\
 OBJS_SOURCE = $(SOURCE:.c=.o)
 
 NAME = push_swap
-PS_SOURCE = push_swap/srcs/push_swap.c	\
-	push_swap/srcs/sort_greater.c		\
-	push_swap/srcs/sort_three.c			\
-	push_swap/srcs/simple_sort.c
+PS_SOURCE = srcs/push_swap/push_swap.c	\
+	srcs/push_swap/sort_greater.c		\
+	srcs/push_swap/sort_three.c			\
+	srcs/push_swap/sort_up_to_six.c		\
+	srcs/push_swap/simple_sort.c		\
+	srcs/push_swap/sort_utils.c
 PS_OBJS = $(PS_SOURCE:.c=.o)
 
 CHECKER = checker
-CHECKER_SOURCE = checker/srcs/checker.c
+CHECKER_SOURCE = srcs/checker/checker.c
 CHECKER_OBJS = $(CHECKER_SOURCE:.c=.o)
-
-# $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-# 	@mkdir -p $(@D)
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# OBJS = $(SRCS:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 LIBFT = srcs/libft/libft.a
 
@@ -46,7 +42,7 @@ all: $(NAME)
 $(NAME): $(PS_OBJS) $(OBJS_SOURCE) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $^
 
-libft/libft.a:
+$(LIBFT):
 	make -C srcs/libft
 
 bonus: all $(CHECKER)
@@ -63,7 +59,7 @@ fclean: clean
 
 re: fclean all
 
-push: #fclean
+push: fclean
 	git add .
 	git commit -m "$(TIME) - $(M)"
 	git push origin master

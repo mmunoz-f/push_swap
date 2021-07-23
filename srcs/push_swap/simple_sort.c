@@ -6,47 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 23:00:51 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 23:04:46 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/23 00:34:44 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-static void	join_cmds(t_stack **a, t_stack **b)
-{
-	if ((*a)->n == M_SA && (*b)->n == M_SB)
-	{
-		(*a)->n = M_SS;
-		*b = remove_front_stack(*b);
-	}
-	else if ((*a)->n == M_RA && (*b)->n == M_RB)
-	{
-		(*a)->n = M_RR;
-		*b = remove_front_stack(*b);
-	}
-	else if ((*a)->n == M_RRA && (*b)->n == M_RRB)
-	{
-		(*a)->n = M_RRR;
-		*b = remove_front_stack(*b);
-	}
-}
-
-void	compare_cmds(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-
-	tmp = *a;
-	while (tmp && *b)
-	{
-		join_cmds(&tmp, b);
-		tmp = tmp->next;
-	}
-	while (*b)
-	{
-		*a = add_back_stack((*b)->n, *a);
-		*b = remove_front_stack(*b);
-	}
-}
 
 void	simple_solve(t_stack **a, t_stack **cmds)
 {
@@ -57,7 +21,7 @@ void	simple_solve(t_stack **a, t_stack **cmds)
 	tmp = cpy_stack(*a, stack_len(*a));
 	while (is_ordered(tmp, 1) || recover)
 	{
-		if (!is_ordered(tmp, 1) &&  recover)
+		if (!is_ordered(tmp, 1) && recover)
 		{
 			reverse_rotate_op(a);
 			push_op(&tmp, &recover);

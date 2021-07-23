@@ -62,6 +62,8 @@ static void	solve_push_swap(t_stack **a, t_stack **b, t_stack **cmds)
 	}
 	else if (len_a == 3)
 		sort_three(a, cmds, 0);
+	else if (len_a <= 6)
+		sort_up_to_six(a, b, cmds);
 	else
 		sort_greater(a, b, cmds);
 	leave_solve(*a, *cmds);

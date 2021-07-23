@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <errno.h>
-# include "libft/libft.h"
+# include "../srcs/libft/libft.h"
 
 # define M_SA 1
 # define M_SB 2
@@ -99,14 +99,22 @@ void			sort_three(t_stack **a, t_stack **cmds, int stack);
 void			sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
 
 /**
- * 	sort_greater.c
+ * 	sort_up_to_six.c
  */
-
-void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
 
 void			get_max_min(t_stack *a, int *max, int *min);
 
 int				get_mid_value(t_stack *a, unsigned int len);
+
+void			pass_half(t_stack **a, t_stack **b, t_stack **cmds);
+
+void			sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds);
+
+/**
+ * 	sort_greater.c
+ */
+
+void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
 
 /**
  * 	simple_sort.c

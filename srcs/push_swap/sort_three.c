@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:07:45 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/22 23:05:00 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/23 00:38:25 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ static void	third_case(t_stack **a, t_stack **cmds, int stack)
 
 void	sort_reverse_three(t_stack **a, t_stack **cmds, int stack)
 {
-	if ((*a)->n < (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
-			&& (*a)->n < (*a)->next->next->n)
-		|| ((*a)->next->n > (*a)->next->next->n
-			&& (*a)->n > (*a)->next->next->n)))
+	if (!is_ordered(*a, 0))
+		return ;
+	else if ((*a)->n < (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
+				&& (*a)->n < (*a)->next->next->n)
+			|| ((*a)->next->n > (*a)->next->next->n
+				&& (*a)->n > (*a)->next->next->n)))
 	{
 		swap_op(*a);
 		add_cmds(cmds, M_SA, stack);
@@ -75,7 +77,9 @@ void	sort_reverse_three(t_stack **a, t_stack **cmds, int stack)
 
 void	sort_three(t_stack **a, t_stack **cmds, int stack)
 {
-	if ((*a)->n > (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
+	if (!is_ordered(*a, 1))
+		return ;
+	else if ((*a)->n > (*a)->next->n && (((*a)->next->n < (*a)->next->next->n
 				&& (*a)->n < (*a)->next->next->n)
 			|| ((*a)->next->n > (*a)->next->next->n
 				&& (*a)->n > (*a)->next->next->n)))

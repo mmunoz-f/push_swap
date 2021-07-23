@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 16:58:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 23:07:30 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/23 00:30:49 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static int	compare_op(char *line)
 	if (!ft_strcmp(line, "pa"))
 		return (M_PA);
 	else if (!ft_strcmp(line, "pb"))
-		return(M_PB);
+		return (M_PB);
 	else if (!ft_strcmp(line, "sa"))
-		return(M_SA);
+		return (M_SA);
 	else if (!ft_strcmp(line, "sb"))
-		return(M_SB);
+		return (M_SB);
 	else if (!ft_strcmp(line, "ss"))
-		return(M_SS);
+		return (M_SS);
 	else if (!ft_strcmp(line, "ra"))
-		return(M_RA);
+		return (M_RA);
 	else if (!ft_strcmp(line, "rb"))
-		return(M_RB);
+		return (M_RB);
 	else if (!ft_strcmp(line, "rr"))
-		return(M_RR);
+		return (M_RR);
 	else if (!ft_strcmp(line, "rra"))
-		return(M_RRA);
+		return (M_RRA);
 	else if (!ft_strcmp(line, "rrb"))
-		return(M_RRB);
+		return (M_RRB);
 	else if (!ft_strcmp(line, "rrr"))
-		return(M_RRR);
+		return (M_RRR);
 	return (0);
 }
 

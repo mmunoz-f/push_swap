@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_greater.c                                     :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/19 20:39:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 23:04:52 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/07/23 00:33:05 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/07/23 00:34:12 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	steps_to_min(t_stack *a, int mid_value)
 	return (steps);
 }
 
-static void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
+void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
 {
 	int	steps;
 	int	mid;
@@ -98,30 +98,4 @@ static void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
 		push_op(b, a);
 		*cmds = add_back_stack(M_PB, *cmds);
 	}
-}
-
-void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
-{
-	t_stack	*b_cmds;
-
-	pass_half(a, b, cmds);
-	while (*cmds)
-		print_cmds(cmds);
-	// read_stack(*a, "INIT a\n");
-	// read_stack(*b, "INIT b\n");
-	b_cmds = 0;
-	simple_reverse_solve(b, &b_cmds);
-	simple_solve(a, cmds);
-	// read_stack(*a, "After sort a\n");
-	// read_stack(*b, "After sort b\n");
-	compare_cmds(cmds, &b_cmds);
-	while (*b)
-	{
-		push_op(a, b);
-		*cmds = add_back_stack(M_PA, *cmds);
-	}
-	while (*cmds)
-		print_cmds(cmds);
-	// read_stack(*a, "Finish a\n");
-	// read_stack(*b, "Finish b\n");
 }

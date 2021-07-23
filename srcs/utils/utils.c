@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 17:59:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/22 23:06:57 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/23 00:48:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	init_stack(int argc, char **ints, t_stack **a)
 		error_exit("Error\nNot a valid argument\n", 1);
 }
 
-void charge_arguments(int argc, char **argv, t_stack **a)
+void	charge_arguments(int argc, char **argv, t_stack **a)
 {
 	char			**split;
 	char			**tmp1;
