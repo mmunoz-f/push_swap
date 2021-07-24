@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:33:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/23 00:34:12 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/24 18:34:56 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	get_max_min(t_stack *a, int *max, int *min)
 {
-	*max = a->n;
-	*min = a->n;
+	if (max)
+		*max = a->n;
+	if (min)
+		*min = a->n;
 	while (a)
 	{
-		if (*max < a->n)
+		if (max && *max < a->n)
 			*max = a->n;
-		if (*min > a->n)
+		if (min && *min > a->n)
 			*min = a->n;
 		a = a->next;
 	}
@@ -73,14 +75,11 @@ static int	steps_to_min(t_stack *a, int mid_value)
 	return (steps);
 }
 
-void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
+void	pass_half(t_stack **a, t_stack **b, t_stack **cmds, unsigned int len)
 {
 	int	steps;
 	int	mid;
-	int	len;
 
-	len = stack_len(*a);
-	len /= 2;
 	mid = get_mid_value(*a, len);
 	while (len--)
 	{
@@ -98,4 +97,24 @@ void	pass_half(t_stack **a, t_stack **b, t_stack **cmds)
 		push_op(b, a);
 		*cmds = add_back_stack(M_PB, *cmds);
 	}
+}
+
+unsigned int	divide_in_chunks(t_stack **a, t_stack **b, t_stack **cmds)
+{
+	unsigned int	len;
+	unsigned int	chunk_lenth;
+
+	len = stack_len(*a);
+	if (len <= 20)
+		chunk_lenth = 5;
+	else if (len < 100)
+		chunk_lenth = 10;
+	else if (len < 500)
+		chunk_lenth = 20;
+	else
+		chunk_lenth = 50;
+
+	while (stack_len(*a) > chunk_lenth)
+		pass_half(a, b, cmds, chunk_lenth);
+	return (chunk_lenth);
 }

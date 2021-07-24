@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:12:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/23 00:34:49 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/24 14:03:37 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds)
 {
 	t_stack			*b_cmds;
 
-	pass_half(a, b, cmds);
+	pass_half(a, b, cmds, stack_len(*a) / 2);
 	read_stack(*a, "stack a\n");
 	read_stack(*b, "stack b\n");
 	while (*cmds)

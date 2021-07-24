@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/22 23:05:17 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/24 18:54:33 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ void	read_stack(t_stack *a, char *stack_name)
 {
 	if (stack_name)
 	{
-		ft_putstr_fd(stack_name, 0);
-		ft_putchar_fd('\n', 0);
+		ft_putstr_fd(stack_name, STDOUT_FILENO);
+		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 	while (a)
 	{
-		ft_putnbr_fd(a->n, 0);
-		ft_putchar_fd('\n', 0);
+		ft_putnbr_fd(a->n, STDOUT_FILENO);
+		ft_putchar_fd('\n', STDOUT_FILENO);
 		a = a->next;
 	}
 	if (stack_name)
-		ft_putstr_fd("------\n", 0);
+		ft_putstr_fd("------\n", STDOUT_FILENO);
 }
 
 void	free_stack(t_stack *a)

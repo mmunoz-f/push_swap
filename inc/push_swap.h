@@ -102,13 +102,22 @@ void			sort_reverse_three(t_stack **a, t_stack **cmds, int stack);
  * 	sort_up_to_six.c
  */
 
+void			compare_cmds(t_stack **a, t_stack **b);
+
+void			sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds);
+
+/**
+ * 	sort_utils.c
+ */
+
 void			get_max_min(t_stack *a, int *max, int *min);
 
 int				get_mid_value(t_stack *a, unsigned int len);
 
-void			pass_half(t_stack **a, t_stack **b, t_stack **cmds);
+void			pass_half(t_stack **a, t_stack **b, t_stack **cmds, unsigned int len);
 
-void			sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds);
+unsigned int	divide_in_chunks(t_stack **a, t_stack **b, t_stack **cmds);
+
 
 /**
  * 	sort_greater.c
@@ -120,10 +129,8 @@ void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
  * 	simple_sort.c
  */
 
-void			simple_reverse_solve(t_stack **b, t_stack **cmds);
+void			simple_reverse_solve(t_stack **b, t_stack **cmds, unsigned int len);
 
-void			simple_solve(t_stack **a, t_stack **cmds);
-
-void			compare_cmds(t_stack **a, t_stack **b);
+void			simple_solve(t_stack **a, t_stack **cmds, unsigned int len);
 
 #endif
