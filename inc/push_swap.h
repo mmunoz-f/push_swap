@@ -110,26 +110,14 @@ void			sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds);
  * 	sort_utils.c
  */
 
-void			get_max_min(t_stack *a, int *max, int *min);
+int				get_nmax(t_stack *a, unsigned int n);
 
-int				get_mid_value(t_stack *a, unsigned int len);
-
-int				steps_to_min(t_stack *a, int mid_value);
-
-void			pass_half(t_stack **a, t_stack **b, t_stack **cmds, unsigned int len);
+int				get_nmin(t_stack *a, unsigned int n);
 
 /**
  * 	sort_greater.c
  */
 
 void			sort_greater(t_stack **a, t_stack **b, t_stack **cmds);
-
-/**
- * 	simple_sort.c
- */
-
-void			simple_reverse_solve(t_stack **b, t_stack **cmds, unsigned int len);
-
-void			simple_solve(t_stack **a, t_stack **cmds, unsigned int len);
 
 #endif
