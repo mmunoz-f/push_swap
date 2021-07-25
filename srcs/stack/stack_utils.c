@@ -6,20 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/24 18:54:33 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/25 02:22:06 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-void	merge_stack(t_stack *a, t_stack *b)
-{
-	while (b)
-	{
-		push_op(&a, &b);
-		write(STDOUT_FILENO, "pa\n", 3);
-	}
-}
 
 unsigned int	stack_len(t_stack *a)
 {

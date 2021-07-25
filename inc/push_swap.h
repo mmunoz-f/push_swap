@@ -76,7 +76,7 @@ void			free_stack(t_stack *a);
 
 unsigned int	stack_len(t_stack *a);
 
-void			merge_stack(t_stack *a, t_stack *b);
+void			merge_stack(t_stack **a, t_stack **b, t_stack **cmds);
 
 /**
  * 	push_swap_operations.c
@@ -114,10 +114,9 @@ void			get_max_min(t_stack *a, int *max, int *min);
 
 int				get_mid_value(t_stack *a, unsigned int len);
 
+int				steps_to_min(t_stack *a, int mid_value);
+
 void			pass_half(t_stack **a, t_stack **b, t_stack **cmds, unsigned int len);
-
-unsigned int	divide_in_chunks(t_stack **a, t_stack **b, t_stack **cmds);
-
 
 /**
  * 	sort_greater.c

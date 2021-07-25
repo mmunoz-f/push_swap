@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:33:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/24 18:34:56 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/25 01:28:02 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	get_mid_value(t_stack *a, unsigned int len)
 	return (min);
 }
 
-static int	steps_to_min(t_stack *a, int mid_value)
+int	steps_to_min(t_stack *a, int mid_value)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
@@ -81,7 +81,7 @@ void	pass_half(t_stack **a, t_stack **b, t_stack **cmds, unsigned int len)
 	int	mid;
 
 	mid = get_mid_value(*a, len);
-	while (len--)
+	while (*a && len--)
 	{
 		steps = steps_to_min(*a, mid);
 		while (mid < (*a)->n && steps >= 0)
