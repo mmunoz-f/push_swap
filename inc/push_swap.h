@@ -64,6 +64,8 @@ t_stack			*remove_back_stack(t_stack *a);
 
 t_stack			*cpy_stack(t_stack *a, int n);
 
+int				last_value(t_stack *cmds);
+
 /**
  *	push_swap_utils.c
  */
