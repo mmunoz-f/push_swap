@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:12:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/25 06:06:10 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/26 17:28:17 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ static int	steps_to_lower(t_stack *a, int max)
 	tmp1 = cpy_stack(a, stack_len(a));
 	tmp2 = cpy_stack(a, stack_len(a));
 	steps = 0;
-	while (tmp1 && !(max > tmp1->n))
+	while (tmp1 && !(max < tmp1->n))
 	{
 		rotate_op(&tmp1);
 		steps--;
 	}
-	while (tmp2 && !(max > tmp2->n))
+	while (tmp2 && !(max < tmp2->n))
 	{
 		reverse_rotate_op(&tmp2);
 		steps++;
