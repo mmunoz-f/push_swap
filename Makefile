@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/25 05:58:00 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/26 18:24:16 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ PS_SOURCE = srcs/push_swap/push_swap.c	\
 	srcs/push_swap/sort_greater.c		\
 	srcs/push_swap/sort_three.c			\
 	srcs/push_swap/sort_up_to_six.c		\
+	srcs/push_swap/pass_nnumber.c		\
 	srcs/push_swap/sort_utils.c
 PS_OBJS = $(PS_SOURCE:.c=.o)
 
