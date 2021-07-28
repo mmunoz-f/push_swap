@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 13:27:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/28 20:58:56 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/28 23:03:56 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static unsigned int	number_of_chunks(t_stack *a)
 	len = stack_len(a);
 	if (len <= 20)
 		chunks = 2;
-	else if (len <= 100)
+	else if (len < 100)
 		chunks = 5;
-	else if (len <= 500)
+	else if (len < 500)
 		chunks = 8;
 	else
-		chunks = 11;
+		chunks = 10;
 	return (chunks);
 }
 
