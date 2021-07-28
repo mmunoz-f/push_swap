@@ -123,6 +123,14 @@ int				get_nmin(t_stack *a, unsigned int n);
 void			pass_nmax(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
 
 void			pass_nmin(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
+
+/**
+ * 	pass_chunks.c
+ */
+
+void			pass_chunks(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
+
+
 /**
  * 	sort_greater.c
  */
