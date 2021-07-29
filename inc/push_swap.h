@@ -35,14 +35,6 @@ typedef struct s_stack
 }	t_stack;
 
 /**
- * 	push_swap.c
- */
-
-void			leave_solve(t_stack *a, t_stack *cmds);
-
-void			print_cmds(t_stack **cmds);
-
-/**
  * 	utils.c
  */
 
@@ -51,7 +43,7 @@ void			charge_arguments(int argc, char **argv, t_stack **a);
 void			error_exit(char *line, int errnum);
 
 /**
- *	stack_utils.c
+ *	stack.c
  */
 
 t_stack			*add_back_stack(int n, t_stack *a);
@@ -64,11 +56,11 @@ t_stack			*remove_back_stack(t_stack *a);
 
 t_stack			*cpy_stack(t_stack *a, int n);
 
-int				last_value(t_stack *cmds);
-
 /**
- *	push_swap_utils.c
+ *	stack_utils.c
  */
+
+int				last_value(t_stack *cmds);
 
 void			read_stack(t_stack *a, char *stack_name);
 
@@ -78,10 +70,8 @@ void			free_stack(t_stack *a);
 
 unsigned int	stack_len(t_stack *a);
 
-void			merge_stack(t_stack **a, t_stack **b, t_stack **cmds);
-
 /**
- * 	push_swap_operations.c
+ * 	operations.c
  */
 
 void			swap_op(t_stack *a);
@@ -91,6 +81,32 @@ void			push_op(t_stack **a, t_stack **b);
 void			rotate_op(t_stack **a);
 
 void			reverse_rotate_op(t_stack **a);
+
+/**
+ * 	push_swap.c
+ */
+
+void			leave_solve(t_stack *a, t_stack *cmds);
+
+void			print_cmds(t_stack **cmds);
+
+/**
+ * 	sort_utils.c
+ */
+
+int				get_nmax(t_stack *a, unsigned int n);
+
+int				get_nmin(t_stack *a, unsigned int n);
+
+/**
+ * 	pass_nnumber.c
+ */
+
+void			pass_nmax(t_stack **a, t_stack **b, t_stack **cmds,
+					unsigned int chunk_len);
+
+void			pass_nmin(t_stack **a, t_stack **b, t_stack **cmds,
+					unsigned int chunk_len);
 
 /**
  * 	sort_three.c
@@ -109,27 +125,11 @@ void			compare_cmds(t_stack **a, t_stack **b);
 void			sort_up_to_six(t_stack **a, t_stack **b, t_stack **cmds);
 
 /**
- * 	sort_utils.c
- */
-
-int				get_nmax(t_stack *a, unsigned int n);
-
-int				get_nmin(t_stack *a, unsigned int n);
-
-/**
- * 	pass_nnumber.c
- */
-
-void			pass_nmax(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
-
-void			pass_nmin(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
-
-/**
  * 	pass_chunks.c
  */
 
-void			pass_chunks(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len);
-
+void			pass_chunks(t_stack **a, t_stack **b, t_stack **cmds,
+					unsigned int chunk_len);
 
 /**
  * 	sort_greater.c

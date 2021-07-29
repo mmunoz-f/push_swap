@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:55:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 18:31:46 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:17:09 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	reuse_actions(t_stack **a, t_stack **b, t_stack *cmds)
 	}
 }
 
-void	pass_chunks(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len)
+void	pass_chunks(t_stack **a, t_stack **b, t_stack **cmds,
+			unsigned int chunk_len)
 {
 	unsigned int	len;
 

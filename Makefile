@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/28 17:18:09 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/29 19:09:15 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ TIME =   $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
 SOURCE = srcs/stack/stack_utils.c		\
 	srcs/stack/operations.c				\

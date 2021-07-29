@@ -44,7 +44,6 @@ void	leave_solve(t_stack *a, t_stack *cmds)
 	while (cmds)
 		print_cmds(&cmds);
 	free_stack(a);
-	//system("leaks push_swap");
 	exit(0);
 }
 

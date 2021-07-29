@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:33:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/28 17:44:29 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:18:03 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_max(t_stack *a)
 	while (a)
 	{
 		if (max < a->n)
-			max  = a->n;
+			max = a->n;
 		a = a->next;
 	}
 	return (max);

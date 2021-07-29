@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 13:27:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 18:55:39 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:17:51 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	translate_cmds(t_stack *cmds)
 	}
 }
 
-static void	solve_chunks(t_stack **a, t_stack **b, t_stack **cmds, t_stack **b_cmds)
+static void	solve_chunks(t_stack **a, t_stack **b, t_stack **cmds,
+				t_stack **b_cmds)
 {
 	while (*b)
 	{

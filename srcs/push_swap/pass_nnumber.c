@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 18:08:29 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/28 20:40:11 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:17:34 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int	steps_to_lower(t_stack *a, int max)
 	return (steps);
 }
 
-void	pass_nmin(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len)
+void	pass_nmin(t_stack **a, t_stack **b, t_stack **cmds,
+			unsigned int chunk_len)
 {
 	int	max;
 	int	steps;
@@ -84,7 +85,8 @@ static int	steps_to_greater(t_stack *a, int min)
 	return (steps);
 }
 
-void	pass_nmax(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len)
+void	pass_nmax(t_stack **a, t_stack **b, t_stack **cmds,
+			unsigned int chunk_len)
 {
 	int	min;
 	int	steps;
