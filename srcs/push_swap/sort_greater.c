@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 13:27:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 18:36:52 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 18:55:39 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,4 @@ void	sort_greater(t_stack **a, t_stack **b, t_stack **cmds)
 		print_cmds(&b_cmds);
 	sort_three(a, cmds, 0);
 	solve_chunks(a, b, cmds, &b_cmds);
-	// read_stack(*a, "Final a\n");
-	// read_stack(*b, "Final b\n");
 }
