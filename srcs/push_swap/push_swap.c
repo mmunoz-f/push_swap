@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 	t_stack	*cmds;
 
 	if (argc < 2)
-		error_exit("Error\n", 1);
+		return (0);
 	a = 0;
 	charge_arguments(argc - 1, argv + 1, &a);
 	b = 0;
