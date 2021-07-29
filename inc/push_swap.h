@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <errno.h>
-# include "../srcs/libft/libft.h"
+# include "libft.h"
 
 # define M_SA 1
 # define M_SB 2

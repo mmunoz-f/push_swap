@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 18:48:42 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/07/29 19:09:15 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/07/29 19:57:18 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ M =
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
+
+I = inc/
 
 SOURCE = srcs/stack/stack_utils.c		\
 	srcs/stack/operations.c				\
@@ -36,24 +38,28 @@ CHECKER = checker
 CHECKER_SOURCE = srcs/checker/checker.c
 CHECKER_OBJS = $(CHECKER_SOURCE:.c=.o)
 
-LIBFT = srcs/libft/libft.a
+FTA = srcs/libft/libft.a
+FT = srcs/libft/
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I $I -I $(FT) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(PS_OBJS) $(OBJS_SOURCE) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^
+$(NAME): $(PS_OBJS) $(OBJS_SOURCE) $(FTA)
+	$(CC) $(CFLAGS) -I $I -I $(FT) -o $@ $^
 
-$(LIBFT):
+$(FTA):
 	make -C srcs/libft
 
 bonus: all $(CHECKER)
 
-$(CHECKER): $(CHECKER_OBJS) $(OBJS_SOURCE) $(LIBFT)
+$(CHECKER): $(CHECKER_OBJS) $(OBJS_SOURCE) $(FTA)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm -f $(OBJS_SOURCE) $(PS_OBJS) $(CHECKER_OBJS)
-	make fclean -C srcs/libft
+	make fclean -C $(FT)
 
 fclean: clean
 	rm -f $(NAME) $(CHECKER)

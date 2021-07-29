@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:55:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 19:17:09 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:45:41 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 static void	undo_moves(t_stack **a, t_stack **b, t_stack *cmds)
 {

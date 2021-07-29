@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 00:33:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 19:18:03 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:47:13 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 static int	get_max(t_stack *a)
 {

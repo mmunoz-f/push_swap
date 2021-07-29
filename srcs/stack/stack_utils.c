@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 18:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/26 20:27:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:47:13 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 int	last_value(t_stack *cmds)
 {

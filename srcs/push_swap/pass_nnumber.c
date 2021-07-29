@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 18:08:29 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/29 19:17:34 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:40:38 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 static int	steps_to_lower(t_stack *a, int max)
 {

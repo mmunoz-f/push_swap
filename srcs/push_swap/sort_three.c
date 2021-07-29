@@ -6,11 +6,11 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 19:07:45 by miguel            #+#    #+#             */
-/*   Updated: 2021/07/23 00:38:25 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:47:13 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "push_swap.h"
 
 static void	add_cmds(t_stack **cmds, int op, int stack)
 {
