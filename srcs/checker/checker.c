@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 16:58:59 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/23 00:30:49 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:22:34 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,15 +120,12 @@ int	main(int argc, char **argv)
 	a = 0;
 	charge_arguments(argc - 1, argv + 1, &a);
 	b = 0;
-	read_stack(a, "Init stack A\n");
 	if (!a)
 		error_exit("Error\n", errno);
 	op = get_op();
 	while (op)
 	{
 		execute_op(&a, &b, op);
-		read_stack(a, "Stack A\n");
-		read_stack(b, "Stack B\n");
 		op = get_op();
 	}
 	if (b || is_ordered(a, 1))

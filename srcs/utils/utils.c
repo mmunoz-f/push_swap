@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 17:59:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/23 00:48:31 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:29:11 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,30 +38,53 @@ static int	repeat_numbers(t_stack *a)
 	return (0);
 }
 
+static int	greater_than_long(char *string)
+{
+	unsigned long long int	n;
+	int						negative;
+
+	negative = 0;
+	n = 0;
+	if (*string == '-')
+	{
+		negative = 1;
+		string++;
+	}
+	while (ft_strchr("0123456789", *string) && *string)
+	{
+		n = n * 10 + ((*string) - 48);
+		string++;
+		if ((!negative && n > __INT_MAX__)
+			|| (negative && (n - 1) > __INT_MAX__))
+			return (1);
+	}
+	return (0);
+}
+
 static void	init_stack(int argc, char **ints, t_stack **a)
 {
 	int		n;
 
 	while (argc--)
 	{
-		if (!(ft_strchr("-+0123456789", **ints)))
-			error_exit("Error\nNot a valid argument\n", 1);
+		if (greater_than_long(*ints) || !(ft_strchr("-+0123456789", **ints)))
+			error_exit("Error\n", 1);
 		n = ft_atoi(*ints);
 		if (**ints == '-' || **ints == '+')
 		{
 			(*ints)++;
 			if (!**ints)
-				error_exit("Error\nNot a valid argument\n", 1);
+				error_exit("Error\n", 1);
 		}
 		while (ft_strchr("0123456789", **ints) && **ints)
 			(*ints)++;
 		if (**ints)
-			error_exit("Error\nNot a valid argument\n", 1);
+			error_exit("Error\n", 1);
 		*a = add_back_stack(n, *a);
 		ints++;
 	}
 	if (repeat_numbers(*a))
-		error_exit("Error\nNot a valid argument\n", 1);
+		error_exit("Error\n", 1);
 }
 
 void	charge_arguments(int argc, char **argv, t_stack **a)
