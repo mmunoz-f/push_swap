@@ -6,24 +6,25 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 14:55:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/07/28 23:52:22 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/07/29 18:31:46 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-static void	undo_moves(t_stack **a, t_stack **b, t_stack **cmds)
+static void	undo_moves(t_stack **a, t_stack **b, t_stack *cmds)
 {
 	t_stack	*tmp_cmds;
 	int		last;
 
 	last = 0;
-	tmp_cmds = cpy_stack(*cmds, stack_len(*cmds));
-	push_op(b, a);
+	tmp_cmds = cpy_stack(cmds, stack_len(cmds));
 	while (tmp_cmds)
 	{
 		last = last_value(tmp_cmds);
-		if (last == M_RA)
+		if (last == M_PB)
+			push_op(a, b);
+		else if (last == M_RA)
 			reverse_rotate_op(a);
 		else if (last == M_RRA)
 			rotate_op(a);
@@ -33,30 +34,34 @@ static void	undo_moves(t_stack **a, t_stack **b, t_stack **cmds)
 
 static void	reuse_actions(t_stack **a, t_stack **b, t_stack *cmds)
 {
-	undo_moves(a, b, cmds); //now it should redo all cmds, substituing reusable moves
+	undo_moves(a, b, cmds);
 	while (cmds)
 	{
-		while (cmds && cmds->n != M_RA)
-			cmds = cmds->next;
-		if (cmds && (*b)->next && (*b)->n < (*b)->next->n)
+		if (cmds->n == M_RRA)
+			reverse_rotate_op(a);
+		else if (cmds->n == M_PB)
+			push_op(b, a);
+		else if (cmds->n == M_RA)
 		{
-			rotate_op(b);
-			cmds->n = M_RR;
+			if (*b && (*b)->next && (*b)->n < (*b)->next->n)
+			{
+				rotate_op(b);
+				cmds->n = M_RR;
+			}
+			rotate_op(a);
 		}
-		if (cmds)
-			cmds = cmds->next;
+		cmds = cmds->next;
 	}
 }
 
 void	pass_chunks(t_stack **a, t_stack **b, t_stack **cmds, unsigned int chunk_len)
 {
-	t_stack			*cmds;
 	unsigned int	len;
 
 	while (*a)
 	{
 		if (*b)
-			reuse_actions(a, b, cmds);
+			reuse_actions(a, b, *cmds);
 		while (*cmds)
 			print_cmds(cmds);
 		len = stack_len(*a);
